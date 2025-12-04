@@ -1,0 +1,256 @@
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #0f1115;
+}
+
+.chat-header {
+  padding: 20px 32px;
+  border-bottom: 1px solid #2a2d3e;
+  background: #1a1d2e;
+}
+
+.chat-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.chat-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.status-text {
+  font-size: 14px;
+  color: #8b8d98;
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.message {
+  display: flex;
+  gap: 16px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.user {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.message.ai .message-avatar {
+  background: linear-gradient(135deg, #1a1d2e 0%, #16182a 100%);
+  border: 2px solid #5BC4D8;
+}
+
+.message.user .message-avatar {
+  background: linear-gradient(135deg, #5BC4D8 0%, #2C3366 100%);
+}
+
+.avatar-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.avatar-user {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.message-content {
+  flex: 1;
+  max-width: 70%;
+}
+
+.message.user .message-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.message-sender {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.message-timestamp {
+  font-size: 12px;
+  color: #8b8d98;
+}
+
+.message-text {
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #e5e7eb;
+}
+
+.message.ai .message-text {
+  background: #1a1d2e;
+  border: 1px solid #2a2d3e;
+  border-left: 3px solid #5BC4D8;
+}
+
+.message.user .message-text {
+  background: linear-gradient(135deg, #5BC4D8 0%, #4aabb8 100%);
+  color: #ffffff;
+  text-align: right;
+}
+
+.input-container {
+  padding: 24px 32px;
+  border-top: 1px solid #2a2d3e;
+  background: #1a1d2e;
+}
+
+.input-form {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.message-input {
+  flex: 1;
+  padding: 14px 18px;
+  background: #0f1115;
+  border: 1px solid #2a2d3e;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 15px;
+  font-family: inherit;
+  resize: none;
+  min-height: 52px;
+  max-height: 200px;
+  transition: all 0.2s ease;
+}
+
+.message-input:focus {
+  outline: none;
+  border-color: #5BC4D8;
+  box-shadow: 0 0 0 3px rgba(91, 196, 216, 0.1);
+}
+
+.message-input::placeholder {
+  color: #6b6d78;
+}
+
+.send-button {
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #5BC4D8 0%, #4aabb8 100%);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.send-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #6dd4e8 0%, #5BC4D8 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(91, 196, 216, 0.4);
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input-hints {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.hint {
+  font-size: 12px;
+  color: #6b6d78;
+}
+
+.messages-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: #2a2d3e;
+  border-radius: 4px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+  background: #3a3d4e;
+}
